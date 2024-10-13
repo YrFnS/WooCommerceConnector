@@ -3,11 +3,15 @@ import frappe
 from frappe import _
 import json, math, time, pytz
 from .exceptions import woocommerceError
-from frappe.utils import get_request_session, get_datetime, get_time_zone
+from frappe.utils import get_request_session, get_datetime
 from woocommerce import API
 from .utils import make_woocommerce_log
 import requests
 from frappe.utils import cint
+from pytz import timezone
+
+def get_time_zone():
+    return timezone(frappe.defaults.get_global_default("time_zone"))
 
 _per_page=100
 
